@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <title>ABC University</title>
+
+    <link
+            rel="canonical"
+            href="https://getbootstrap.com/docs/4.5/examples/album/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+    />
+
+    <link href="css/album.css" rel="stylesheet" />
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/departments"> ABC University </a>
+        <div class="navbar">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/departments"> Departments</a>
+                <a class="nav-link" href="/employees">Employees</a>
+                <a class="nav-link active" href="/counselings">
+                    Student Counselings <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-link" href="/performances">Student Performances</a>
+                <a class="nav-link" href="/">Logout</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+
+    <% if (message) {   %>
+        <div class="row justify-content-md-center">
+            <div class="alert alert-primary" role="alert">
+                <%= message %>
+            </div>
+        </div>
+
+    <% } %>
+
+    <h1 class="text-justify"> Student Counselings </h1>
+    <div class="col-md-12 col-md-offset-2  justify-content-center">
+        <a role="button" class="btn btn-primary btn-xs" href="/create-counseling">Create a new record</a>
+
+    </div>
+
+    <div class="col-md-12 col-md-offset-2">
+
+        <table class="table table-striped custab">
+            <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>DOA</th>
+                <th>DOB</th>
+                <th>Department Choices</th>
+                <th>Department Admission</th>
+
+            </tr>
+
+            <%
+
+            counselings.forEach(counseling => {
+
+            %>
+
+                <tr>
+                    <td><%=  counseling.Student_ID  %></td>
+                    <td><%=  counseling.DOA  %></td>
+                    <td><%=  counseling.DOB %></td>
+                    <td><%=  counseling.Department_Choices %></td>
+                    <td><%=  counseling.Department_Admission %></td>
+
+                    <td class="text-center"><a class='btn btn-info btn-xs' href="/counselings/update/<%= counseling._id %>" ><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a  href="/counselings/delete/<%= counseling._id %>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+
+                </tr>
+
+            <%
+            });
+            %>
+
+
+
+            </thead>
+
+        </table>
+
+
+    </div>
+        <div class="row col-md-12 col-md-offset-2 custyle mx-auto">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+
+                    <% if (currentPage === 1) { %>
+
+                        <li class="page-item disabled"><a class="page-link" href="#">First</a></li>
+                    <% } %>
+                    <% if (currentPage > 1) { %>
+                        <li class="page-item"><a class="page-link" href="/counselings">First</a></li>
+                    <% } %>
+
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %>"><%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %>"><%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %>"><%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %>"><%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %>"><%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %>"><%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %>"><%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %>"><%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %>"><%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %></a></li>
+                    <li class="page-item"><a class="page-link" href="/counselings?page=<%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %>"><%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %></a></li>
+
+                    <% if (currentPage === numberOfPages) { %>
+
+                        <li class="page-item disabled"><a class="page-link" href="">Last</a></li>
+                    <% } %>
+
+                    <% if (currentPage < numberOfPages) { %>
+                        <li class="page-item"><a class="page-link" href="/counselings?page=<%= numberOfPages %>">Last</a></li>
+                    <% } %>
+
+                </ul>
+            </nav>
+        </div>
+
+        <!-- PAGINATION ARTICLE: https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html-->
+        <!--- https://medium.com/swlh/master-ejs-template-engine-with-node-js-and-expressjs-979cc22b69be-->
+</body>
+</html>

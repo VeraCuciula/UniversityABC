@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <title>ABC University</title>
+
+    <link
+            rel="canonical"
+            href="https://getbootstrap.com/docs/4.5/examples/album/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+    />
+
+    <link href="css/album.css" rel="stylesheet" />
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/departments"> ABC University </a>
+        <div class="navbar">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/departments"> Departments</a>
+                <a class="nav-link" href="/employees">Employees</a>
+                <a class="nav-link active" href="/counselings">
+                    Student Counselings <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-link" href="/performances">Student Performances</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <h1 class="text-center">Update the Record</h1>
+    <div class="row justify-content-md-center">
+        <div class="col-">
+            <form method="POST" action="/counselings/update/<%= counseling._id %>">
+
+                <div class="form-group">
+                    <label for="id">Student ID</label>
+                    <input
+                            value="<%= counseling.Student_ID %>"
+                            type="text"
+                            class="form-control"
+                            id="id"
+                            name="id"
+                            placeholder="Enter ID (SIDYYYY1234)"
+                    />
+
+                    <% if (errors['id']) { %>
+                        <p style="color: red"><%= errors['id'].message %></p>
+                    <% } %>
+                </div>
+
+                <div class="form-group">
+                    <label for="doa">DOA</label>
+                    <input
+                            value="<%= counseling.DOA.toISOString().substring(0, 10) %>"
+                            type="date"
+                            class="form-control"
+                            id="doa"
+                            name="doa"
+                    />
+                    <% if (errors['doa']) { %>
+                        <p style="color: red"><%= errors['doa'].message %></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="dob">DOB</label>
+                    <input
+                            value="<%= counseling.DOB.toISOString().substring(0, 10) %>"
+                            type="date"
+                            class="form-control"
+                            id="dob"
+                            name="dob"
+                    />
+                    <% if (errors['dob']) { %>
+                        <p style="color: red"><%= errors['dob'].message %></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="department_choices">Select Department Choices</label>
+                    <select
+                            class="form-control"
+                            name="department_choices"
+                            id="department_choices"
+                    >
+                        <% departments.forEach( department => { %>
+
+                            <% if (department.Department_ID === counseling.Department_Choices) { %>
+                                <option value="<%= department.Department_ID %>" selected><%= department.Department_Name %></option>
+                            <% } else { %>
+                                <option value="<%= department.Department_ID %>"><%= department.Department_Name %></option>
+                            <% } %>
+
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="department_admission">Select Department Admission</label>
+                    <select
+                            class="form-control"
+                            name="department_admission"
+                            id="department_admission"
+                    >
+                        <% departments.forEach( department => { %>
+
+                            <% if (department.Department_ID === counseling.Department_Admission) { %>
+                                <option value="<%= department.Department_ID %>" selected><%= department.Department_Name %></option>
+                            <% } else { %>
+                                <option value="<%= department.Department_ID %>"><%= department.Department_Name %></option>
+                            <% } %>
+
+                        <% }) %>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+</html>

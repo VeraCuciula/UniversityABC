@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <title>ABC University</title>
+
+    <link
+            rel="canonical"
+            href="https://getbootstrap.com/docs/4.5/examples/album/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+    />
+
+    <link href="css/album.css" rel="stylesheet" />
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/departments"> ABC University </a>
+        <div class="navbar">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/departments"> Departments</a>
+                <a class="nav-link active" href="/employees">
+                    Employees <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-link" href="/counselings">Student Counselings</a>
+                <a class="nav-link" href="/performances">Student Performances</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="container">
+    <h1 class="text-center">Create A New Employee</h1>
+    <div class="row justify-content-md-center">
+        <div class="col-">
+            <form method="POST" action="/create-employee">
+                <div class="form-group">
+                    <label for="id">Employee ID</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="id"
+                            name="id"
+                            placeholder="Enter ID (IU123456)"
+                    />
+
+                    <% if (errors['id']) { %>
+                        <p style="color: red"><%= errors['id'].message %></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="dob">DOB</label>
+                    <input
+                            type="date"
+                            class="form-control"
+                            id="dob"
+                            name="dob"
+                    />
+                    <% if (errors['dob']) { %>
+                        <p style="color: red"><%= errors['dob'].message %></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="doj">DOJ</label>
+                    <input
+                            type="date"
+                            class="form-control"
+                            id="doj"
+                            name="doj"
+                    />
+                    <% if (errors['doj']) { %>
+                        <p style="color: red"><%= errors['doj'].message %></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="department_id">Select Department</label>
+                    <select
+                            class="form-control"
+                            name="department_id"
+                            id="department_id"
+                    >
+                        <% departments.forEach( department => { %>
+
+                            <option value="<%= department.Department_ID %>"><%= department.Department_Name %></option>
+
+                        <% }) %>
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+</html>

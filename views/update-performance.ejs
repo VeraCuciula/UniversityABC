@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <title>ABC University</title>
+
+    <link
+            rel="canonical"
+            href="https://getbootstrap.com/docs/4.5/examples/album/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+    />
+
+    <link href="css/album.css" rel="stylesheet" />
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/departments"> ABC University </a>
+        <div class="navbar">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/departments"> Departments</a>
+                <a class="nav-link" href="/employees">Employees</a>
+                <a class="nav-link" href="/counselings">Student Counselings</a>
+                <a class="nav-link active" href="/performances">
+                    Student Performances <span class="sr-only">(current)</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <h1 class="text-center">Update the Record</h1>
+    <div class="row justify-content-md-center">
+        <div class="col-">
+            <form method="POST" action="/performances/update/<%= performance._id %>">
+
+                <div class="form-group">
+                    <label for="id">Student ID</label>
+                    <input
+                            value="<%= performance.Student_ID %>"
+                            type="text"
+                            class="form-control"
+                            id="id"
+                            name="id"
+                            placeholder="Enter ID (SIDYYYY1234)"
+                    />
+
+                    <% if (errors['id']) { %>
+                        <p style="color: red"><%= errors['id'].message %></p>
+                    <% } %>
+                </div>
+
+                <div class="form-group">
+                    <label for="sem_name">Semester Name</label>
+                    <input
+                            value="<%= performance.Semster_Name %>"
+                            type="text"
+                            class="form-control"
+                            id="sem_name"
+                            name="sem_name"
+                    />
+                    <% if (errors['sem_name']) { %>
+                        <p style="color: red"><%= errors['sem_name'].message %></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="paper_id">Paper ID</label>
+                    <input
+                            value="<%= performance.Paper_ID %>"
+                            type="text"
+                            class="form-control"
+                            id="paper_id"
+                            name="paper_id"
+                            placeholder="Enter ID (SEM100X1234)"
+                    />
+
+                    <% if (errors['paper_id']) { %>
+                        <p style="color: red"><%= errors['paper_id'].message %></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="paper_name">Paper Name</label>
+                    <input
+                            value="<%= performance.Paper_Name %>"
+                            type="text"
+                            class="form-control"
+                            id="paper_name"
+                            name="paper_name"
+                    />
+                    <% if (errors['paper_name']) { %>
+                        <p style="color: red"><%= errors['paper_name'].message %></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="marks">Marks</label>
+                    <input
+                            value="<%= performance.Marks %>"
+                            type="number"
+                            class="form-control"
+                            id="marks"
+                            name="marks"
+                    />
+
+                    <% if (errors['marks']) { %>
+                        <p style="color: red"><%= errors['marks'].message %></p>
+                    <% } %>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+</html>
